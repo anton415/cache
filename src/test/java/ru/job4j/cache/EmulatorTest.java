@@ -16,7 +16,7 @@ public class EmulatorTest {
 
     @Test
     public void whenLoadFileToCacheThenGetFileFromCache() {
-        String file = "text.txt";
+        String file = "src/test/resources/text.txt";
         Emulator.loadFileToCache(file);
         assertThat(Emulator.getFileFromCache(file), is("This is sample file.\nRead me.\n:)"));
     }

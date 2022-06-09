@@ -3,7 +3,6 @@ package ru.job4j.cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.util.Scanner;
 
 /**
@@ -15,16 +14,21 @@ import java.util.Scanner;
  */
 public class Emulator {
     private static final Logger LOG = LoggerFactory.getLogger(Emulator.class.getName());
-    private static String cachingDir = "src/test/resources/";
+    private static String cachingDir = "";
     private static final AbstractCache<String, String> CACHE = new DirFileCache(cachingDir);
+    private static final String SET_CACHE_DIR = "1. Set cache dir.";
+    private static final String GET_CACHE_DIR = "2. Get cache dir.";
+    private static final String LOAD_FILE_TO_CACHE = "3. Load file to cache.";
+    private static final String GET_FILE_FROM_CACHE = "4. Get file from cache.";
+    private static final String EXIT = "5. Exit.";
 
     public static void main(String[] args) {
         LOG.info("Menu.");
-        LOG.info("1. Set cache dir.");
-        LOG.info("2. Get cache dir.");
-        LOG.info("3. Load file to cache.");
-        LOG.info("4. Get file from cache.");
-        LOG.info("5. Exit.");
+        LOG.info(SET_CACHE_DIR);
+        LOG.info(GET_CACHE_DIR);
+        LOG.info(LOAD_FILE_TO_CACHE);
+        LOG.info(GET_FILE_FROM_CACHE);
+        LOG.info(EXIT);
 
         while (true) {
             LOG.info("Enter menu number:");

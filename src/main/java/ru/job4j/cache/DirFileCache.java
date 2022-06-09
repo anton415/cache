@@ -13,6 +13,9 @@ import java.nio.file.Path;
 public class DirFileCache extends AbstractCache<String, String> {
 
     private final String cachingDir;
+    public DirFileCache() {
+        this.cachingDir = "";
+    }
 
     public DirFileCache(String cachingDir) {
         this.cachingDir = cachingDir;

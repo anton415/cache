@@ -10,16 +10,14 @@ public class EmulatorTest {
     @Test
     public void whenSetCacheDirThenGetCacheDir() {
         String testDir = "highway to hell";
-        Emulator emulator = new Emulator();
-        emulator.setCacheDir(testDir);
-        assertThat(emulator.getCachingDir(), is(testDir));
+        Emulator.setCacheDir(testDir);
+        assertThat(Emulator.getCachingDir(), is(testDir));
     }
 
     @Test
     public void whenLoadFileToCacheThenGetFileFromCache() {
         String file = "text.txt";
-        Emulator emulator = new Emulator();
-        emulator.loadFileToCache(file);
-        assertThat(emulator.getFileFromCache(file), is("This is sample file.\nRead me.\n:)"));
+        Emulator.loadFileToCache(file);
+        assertThat(Emulator.getFileFromCache(file), is("This is sample file.\nRead me.\n:)"));
     }
 }

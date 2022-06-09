@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Emulator {
     private static final Logger LOG = LoggerFactory.getLogger(Emulator.class.getName());
     private static String cachingDir = "src/test/resources/";
-    private static final AbstractCache<String, String> cache = new DirFileCache(cachingDir);
+    private static final AbstractCache<String, String> CACHE = new DirFileCache(cachingDir);
 
     public static void main(String[] args) {
         LOG.info("Menu.");
@@ -60,10 +60,10 @@ public class Emulator {
     }
 
     public static void loadFileToCache(String file) {
-        cache.put(file, cache.load(file));
+        CACHE.put(file, CACHE.load(file));
     }
 
     public static String getFileFromCache(String file) {
-        return cache.get(file);
+        return CACHE.get(file);
     }
 }

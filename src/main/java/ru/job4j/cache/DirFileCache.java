@@ -1,9 +1,8 @@
 package ru.job4j.cache;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.stream.Collectors;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * Программа считывает текстовые файлы из системы и выдавать текст при запросе имени файла.
@@ -22,8 +21,8 @@ public class DirFileCache extends AbstractCache<String, String> {
     @Override
     protected String load(String key) {
         String text;
-        try (BufferedReader in = new BufferedReader(new FileReader(cachingDir + key))) {
-            text = in.lines().collect(Collectors.joining());
+        try {
+            text = Files.readString(Path.of(cachingDir, key));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

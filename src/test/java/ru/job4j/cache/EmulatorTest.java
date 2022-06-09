@@ -20,6 +20,6 @@ public class EmulatorTest {
         String file = "text.txt";
         Emulator emulator = new Emulator();
         emulator.loadFileToCache(file);
-        assertThat(emulator.getFileFromCache(file), is("This is sample file.Read me.:)"));
+        assertThat(emulator.getFileFromCache(file), is("This is sample file.\nRead me.\n:)"));
     }
 }

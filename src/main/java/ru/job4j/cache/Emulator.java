@@ -14,8 +14,8 @@ import java.util.Scanner;
  */
 public class Emulator {
     private static final Logger LOG = LoggerFactory.getLogger(Emulator.class.getName());
-    private static String cachingDir = "";
-    private static final AbstractCache<String, String> CACHE = new DirFileCache(cachingDir);
+    private static String cachingDir;
+    private static final AbstractCache<String, String> CACHE = new DirFileCache();
     private static final String SET_CACHE_DIR = "1. Set cache dir.";
     private static final String GET_CACHE_DIR = "2. Get cache dir.";
     private static final String LOAD_FILE_TO_CACHE = "3. Load file to cache.";
@@ -64,7 +64,7 @@ public class Emulator {
     }
 
     public static void loadFileToCache(String file) {
-        CACHE.put(file, CACHE.load(file));
+        CACHE.put(file, CACHE.load(cachingDir + file));
     }
 
     public static String getFileFromCache(String file) {

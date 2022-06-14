@@ -12,11 +12,17 @@ import java.nio.file.Path;
  */
 public class DirFileCache extends AbstractCache<String, String> {
 
+    private final String cachingDir;
+
+    public DirFileCache(String cachingDir) {
+        this.cachingDir = cachingDir;
+    }
+
     @Override
     protected String load(String key) {
         String text;
         try {
-            text = Files.readString(Path.of(key));
+            text = Files.readString(Path.of(cachingDir + key));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

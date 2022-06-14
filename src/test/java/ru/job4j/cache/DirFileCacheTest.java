@@ -9,21 +9,21 @@ public class DirFileCacheTest {
 
     @Test
     public void whenLoadFileThenGetText() {
-        DirFileCache dirFileCache = new DirFileCache();
-        String text = dirFileCache.load("src/test/resources/text.txt");
+        DirFileCache dirFileCache = new DirFileCache("src/test/resources/");
+        String text = dirFileCache.load("text.txt");
         assertThat(text, is("This is sample file.\nRead me.\n:)"));
     }
 
     @Test(expected = RuntimeException.class)
     public void whenFileDoesNotExistThenGetException() {
-        AbstractCache<String, String> cache = new DirFileCache();
+        AbstractCache<String, String> cache = new DirFileCache("");
         cache.get("RuntimeException");
     }
 
     @Test
     public void whenFileExistButDoesNotLoadedThenLoadFileAndGet() {
-        AbstractCache<String, String> cache = new DirFileCache();
-        String text = cache.load("src/test/resources/text.txt");
+        AbstractCache<String, String> cache = new DirFileCache("src/test/resources/");
+        String text = cache.load("text.txt");
         assertThat(text, is("This is sample file.\nRead me.\n:)"));
     }
 }
